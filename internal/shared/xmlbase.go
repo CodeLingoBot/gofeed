@@ -78,7 +78,7 @@ func (b *XMLBase) FindRoot(p *xpp.XMLPullParser) (event xpp.XMLEventType, err er
 	return
 }
 
-// XMLBase.NextTag iterates through the tokens until it reaches a StartTag or
+// NextTag: XMLBase.NextTag iterates through the tokens until it reaches a StartTag or
 // EndTag It maintains the urlStack upon encountering StartTag and EndTags, so
 // that the top of the stack (accessible through the CurrentBase() and
 // CurrentBaseURL() methods) is the absolute base URI by which relative URIs
@@ -171,7 +171,7 @@ func (b *XMLBase) CurrentBase() string {
 	return ""
 }
 
-// resolve the given string as a URL relative to current base
+// ResolveURL: resolve the given string as a URL relative to current base
 func (b *XMLBase) ResolveURL(u string) (string, error) {
 	if b.CurrentBase() == "" {
 		return u, nil
@@ -206,7 +206,7 @@ func (b *XMLBase) resolveAttrs(p *xpp.XMLPullParser) error {
 	return nil
 }
 
-// Transforms html by resolving any relative URIs in attributes
+// ResolveHTML: Transforms html by resolving any relative URIs in attributes
 // if an error occurs during parsing or serialization, then the original string
 // is returned along with the error.
 func (b *XMLBase) ResolveHTML(relHTML string) (string, error) {
